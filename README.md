@@ -11,11 +11,6 @@ collect, and walk away with a printable action plan.
 
 It runs entirely in the browser. There is no backend, no account and no database.
 
-> ⚠️ **This is a hackathon prototype and a guidance tool.** It is not an official portal,
-> it cannot decide anyone's eligibility and it cannot submit an application. Every scheme
-> entry in the app is **demonstration data** written for this project. Always confirm the
-> current rules, amounts and dates on the official source.
-
 ---
 
 ## Table of contents
