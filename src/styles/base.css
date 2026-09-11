@@ -1,0 +1,285 @@
+/* ==================================================================
+   SaathiSetu — design tokens, reset and typography
+   ------------------------------------------------------------------
+   Palette: deep indigo for structure and trust, teal for progress and
+   confirmation, warm amber for things that need attention, and soft
+   neutral grounds so long forms stay readable.
+   ================================================================== */
+
+:root {
+  /* Brand */
+  --navy-900: #0f1b45;
+  --navy-800: #16255c;
+  --navy-700: #1d3070;
+  --navy-600: #2a3f8f;
+  --indigo-500: #3d55b8;
+  --indigo-100: #e4e9fb;
+  --indigo-50: #f0f3fd;
+
+  --teal-700: #0b6f68;
+  --teal-600: #0f8b81;
+  --teal-500: #14a89c;
+  --teal-100: #d6f3ef;
+  --teal-50: #eafaf7;
+
+  --amber-700: #8a5000;
+  --amber-600: #b06d05;
+  --amber-500: #e8930c;
+  --amber-100: #fdeccc;
+  --amber-50: #fef7e8;
+
+  --red-700: #9b1c25;
+  --red-600: #c02733;
+  --red-100: #fbdfe1;
+  --red-50: #fdf1f2;
+
+  /* Neutrals */
+  --ink-900: #131a2b;
+  --ink-800: #1c2434;
+  --ink-700: #333d52;
+  --ink-600: #4c5670;
+  --ink-500: #626d88;
+  --surface-0: #ffffff;
+  --surface-1: #f7f9fd;
+  --surface-2: #eef2f9;
+  --surface-3: #e3e9f4;
+  --border: #d6ddec;
+  --border-strong: #b9c4da;
+
+  /* Logo custom properties consumed by the inline SVG */
+  --logo-bg: var(--navy-800);
+  --logo-arc: var(--teal-500);
+  --logo-deck: #f6f8fc;
+  --logo-star: var(--amber-500);
+
+  /* Type.
+     A serif carries the display sizes and a sans carries everything else.
+     The pairing does the work a bought typeface would normally do, using only
+     faces that ship with Windows, macOS and most Linux desktops — so there is
+     still no font request leaving the device. Devanagari faces are appended to
+     both stacks: font fallback is per-glyph, so Hindi resolves correctly. */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia,
+    'Nirmala UI', 'Noto Serif Devanagari', serif;
+  --font-sans: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Noto Sans',
+    'Nirmala UI', 'Noto Sans Devanagari', 'Helvetica Neue', Arial, sans-serif;
+  --font-size-base: 1rem;
+  --line-height: 1.6;
+
+  /* Space and shape */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 27, 69, 0.06), 0 1px 3px rgba(15, 27, 69, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 27, 69, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 27, 69, 0.16);
+
+  --content-width: 1120px;
+  --focus-ring: 3px solid var(--amber-600);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--ink-800);
+  background: var(--surface-1);
+  /* Nothing in this app is allowed to push the page sideways on a 360px screen. */
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--space-3);
+  color: var(--navy-900);
+  text-wrap: balance;
+}
+
+/* Display sizes take the serif and tighten as they grow; small headings stay
+   in the sans, which is what keeps the contrast between the two deliberate
+   rather than decorative. */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 1.4rem + 3vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.021em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.014em;
+}
+
+h3,
+h4 {
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+h3 {
+  font-size: 1.06rem;
+}
+
+p {
+  margin: 0 0 var(--space-3);
+  text-wrap: pretty;
+}
+
+/* A hairline-ruled label that introduces a section without shouting. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-700);
+}
+
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+ul,
+ol {
+  margin: 0 0 var(--space-3);
+  padding-left: 1.25rem;
+}
+
+a {
+  color: var(--navy-600);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--navy-800);
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---- Focus -------------------------------------------------------- */
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Keyboard users must always be able to see where they are, including on
+   dark surfaces where amber alone would be too subtle. */
+.site-header :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--amber-500);
+}
+
+/* ---- Utilities ---------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  background: var(--navy-800);
+  color: #fff;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  transition: top 120ms ease-in;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--ink-700);
+}
+
+.inline-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ---- Reduced motion ------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Forced colours ------------------------------------------------- */
+
+@media (forced-colors: active) {
+  .button,
+  .filter-chip,
+  .choice,
+  .status-option {
+    border: 1px solid ButtonBorder;
+  }
+}

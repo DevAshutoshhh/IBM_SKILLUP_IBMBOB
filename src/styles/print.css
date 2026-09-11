@@ -1,0 +1,148 @@
+/* ==================================================================
+   Print stylesheet — the action plan is meant to be carried to a
+   cyber cafe, a school office or a parent, so it must print as a
+   clean document rather than a screenshot of an app.
+   ================================================================== */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  :root {
+    --surface-0: #fff;
+    --surface-1: #fff;
+    --surface-2: #fff;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  /* Everything that only makes sense on screen. */
+  .site-header,
+  .site-nav,
+  .site-footer,
+  .offline-banner,
+  .skip-link,
+  .no-print,
+  .page__actions,
+  .dialog-backdrop,
+  .filters,
+  .toolbar,
+  .results-bar {
+    display: none !important;
+  }
+
+  .page,
+  .app-main {
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+
+  .page__header {
+    margin-bottom: 8mm;
+  }
+
+  .page__title {
+    font-size: 18pt;
+  }
+
+  .plan-sheet {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .plan-sheet__head {
+    border-bottom: 1.5pt solid #000;
+  }
+
+  .plan-sheet__brand {
+    color: #000;
+  }
+
+  .plan-sheet__title {
+    font-size: 16pt;
+  }
+
+  .plan-scores {
+    display: flex;
+    gap: 10mm;
+  }
+
+  .plan-score {
+    background: #fff;
+    border: 1pt solid #666;
+  }
+
+  .plan-score__value {
+    color: #000;
+  }
+
+  /* Keep a heading with the list it introduces. */
+  .plan-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 6mm;
+  }
+
+  .plan-section__title {
+    border-bottom: 0.5pt solid #999;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  .plan-section--deadline {
+    background: #fff;
+    border: 1pt solid #000;
+  }
+
+  .plan-section--deadline .plan-section__title {
+    color: #000;
+  }
+
+  .plan-disclaimer {
+    border: 1pt solid #000;
+    background: #fff;
+    color: #000;
+    break-inside: avoid;
+  }
+
+  .plan-disclaimer svg {
+    display: none;
+  }
+
+  /* Printed links are useless unless the address is visible. */
+  .plan-source a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .plan-source a::after {
+    content: '';
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #000;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  ul,
+  ol {
+    break-inside: avoid;
+  }
+
+  .bullet-list,
+  .step-list {
+    gap: 2mm;
+  }
+}

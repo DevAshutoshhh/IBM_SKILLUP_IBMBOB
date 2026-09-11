@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="SaathiSetu">
+  <rect width="48" height="48" rx="12" fill="#16255c"/>
+  <path d="M8 31c5.5-11 10.8-16.5 16-16.5S34.5 20 40 31" fill="none" stroke="#37c2b8" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M8 31h32" fill="none" stroke="#f6f8fc" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M16 31v-5.2M24 31v-8.4M32 31v-5.2" fill="none" stroke="#37c2b8" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="24" cy="14" r="3.4" fill="#f5a623"/>
+</svg>
