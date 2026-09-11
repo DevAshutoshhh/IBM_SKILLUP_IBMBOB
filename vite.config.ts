@@ -2,10 +2,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// `base` is configurable so the same build works on GitHub Pages
-// (https://<user>.github.io/<repo>/) as well as Netlify/Vercel (root domain).
-// Set SAATHISETU_BASE=/SaathiSetu/ before `npm run build` for GitHub Pages.
 const base = process.env.SAATHISETU_BASE ?? '/';
+if (!base.startsWith('/') || !base.endsWith('/')) {
+  throw new Error('SAATHISETU_BASE must start and end with a slash');
+}
 
 export default defineConfig({
   base,

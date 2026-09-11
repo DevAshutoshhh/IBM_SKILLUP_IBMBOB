@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
@@ -49,10 +50,15 @@ const AppStateContext = createContext<AppStateContextValue | null>(null);
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AppState>(() => loadState());
   const [canPersist] = useState<boolean>(() => storageAvailable());
+  const skipNextSave = useRef(false);
 
   // A single write on every change keeps localStorage and memory in step
   // without scattering storage calls through the component tree.
   useEffect(() => {
+    if (skipNextSave.current) {
+      skipNextSave.current = false;
+      return;
+    }
     saveState(state);
   }, [state]);
 
@@ -127,6 +133,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const deleteAllData = useCallback(() => {
     clearState();
+    // Updating in-memory state normally triggers persistence. Skip that one
+    // write so "delete everything" leaves no SaathiSetu key behind.
+    skipNextSave.current = true;
     setState((current) => ({ ...INITIAL_STATE, language: current.language }));
   }, []);
 

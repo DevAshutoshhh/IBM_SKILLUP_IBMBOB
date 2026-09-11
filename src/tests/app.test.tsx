@@ -199,7 +199,7 @@ describe('the privacy panel', () => {
     await user.click(within(dialog).getByRole('button', { name: /yes, delete everything/i }));
 
     expect(within(dialog).getByText(/all stored data has been deleted/i)).toBeInTheDocument();
-    expect(storedState().profile.educationLevel).toBeNull();
+    expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull();
   });
 
   it('can be dismissed with the Escape key', async () => {

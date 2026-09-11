@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json && vite build",
-    "build:gh-pages": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json && vite build --base=/SaathiSetu/",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",

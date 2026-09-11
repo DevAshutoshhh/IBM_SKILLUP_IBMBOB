@@ -1,19 +1,17 @@
-# Screenshots
+# Screenshot evidence
 
-Drop screenshots of the running app here, then reference them from the root `README.md`, e.g.:
+No screenshot images are currently committed. Add only genuine captures from the completed IBM Bob
+sessions or the running application, after checking that they reveal no email address, token,
+account identifier, browser profile, or unrelated private information.
 
-```markdown
-![Matches screen](docs/screenshots/matches.png)
-```
+Use these descriptive filenames where the corresponding genuine capture is available:
 
-Suggested captures (one per screen):
+- `01-bob-project-init.png`
+- `02-bob-codebase-analysis.png`
+- `03-bob-development-work.png`
+- `04-bob-test-run.png`
+- `05-bob-build-success.png`
+- `06-final-application.png`
 
-- `landing.png` — landing page
-- `profile.png` — profile wizard
-- `matches.png` — matched opportunities with match reasons
-- `compare.png` — side-by-side comparison
-- `documents.png` — document readiness checklist
-- `action-plan.png` — printable action plan
-- `dashboard.png` — dashboard
-
-This folder is tracked so the path exists before you add images.
+After adding images, reference only the files that actually exist from `BOB_USAGE.md` and the root
+README.
