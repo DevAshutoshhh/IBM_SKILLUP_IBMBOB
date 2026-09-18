@@ -27,6 +27,8 @@ import type {
   StudentProfile,
 } from '../types';
 
+// CoachStore is manipulated directly via plain objects; no extra import needed.
+
 export const MAX_COMPARE = 3;
 
 interface AppStateContextValue {
@@ -42,6 +44,8 @@ interface AppStateContextValue {
   clearCompare: () => void;
   selectOpportunity: (opportunityId: string | null) => void;
   setDocumentStatus: (opportunityId: string, documentId: DocumentId, status: DocumentStatus) => void;
+  setCoachActionDone: (opportunityId: string, actionId: string, done: boolean) => void;
+  resetCoachProgress: (opportunityId: string) => void;
   deleteAllData: () => void;
 }
 
@@ -131,6 +135,32 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const setCoachActionDone = useCallback(
+    (opportunityId: string, actionId: string, done: boolean) => {
+      setState((current) => ({
+        ...current,
+        coachProgress: {
+          ...current.coachProgress,
+          [opportunityId]: {
+            ...(current.coachProgress[opportunityId] ?? {}),
+            [actionId]: done,
+          },
+        },
+      }));
+    },
+    [],
+  );
+
+  const resetCoachProgress = useCallback((opportunityId: string) => {
+    setState((current) => ({
+      ...current,
+      coachProgress: {
+        ...current.coachProgress,
+        [opportunityId]: {},
+      },
+    }));
+  }, []);
+
   const deleteAllData = useCallback(() => {
     clearState();
     // Updating in-memory state normally triggers persistence. Skip that one
@@ -155,6 +185,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       clearCompare,
       selectOpportunity,
       setDocumentStatus,
+      setCoachActionDone,
+      resetCoachProgress,
       deleteAllData,
     }),
     [
@@ -169,6 +201,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       clearCompare,
       selectOpportunity,
       setDocumentStatus,
+      setCoachActionDone,
+      resetCoachProgress,
       deleteAllData,
     ],
   );

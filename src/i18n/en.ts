@@ -15,6 +15,7 @@ export const en = {
   'nav.compare': 'Compare',
   'nav.documents': 'Documents',
   'nav.plan': 'Action plan',
+  'nav.coach': 'Application Coach',
   'nav.dashboard': 'Dashboard',
   'nav.privacy': 'Privacy',
   'nav.openMenu': 'Open navigation menu',
@@ -446,6 +447,7 @@ export const en = {
   'privacy.item.bookmarks': 'Saved opportunities',
   'privacy.item.checklists': 'Document checklists',
   'privacy.item.selection': 'Selected application',
+  'privacy.item.coach': 'Coach actions completed',
   'privacy.where.title': 'Where it is stored',
   'privacy.where.body':
     'In your browser’s localStorage on this device only. There is no server, no account and no database behind this app, so there is nowhere else for it to go.',
@@ -480,6 +482,53 @@ export const en = {
     'The rest of the app is unaffected and your saved answers are safe. Reloading usually clears this.',
   'error.reload': 'Reload the app',
   'error.details': 'Technical details',
+
+  /* Guided Application Coach -------------------------------------------- */
+  'coach.title': 'Application Coach',
+  'coach.subtitle':
+    'A step-by-step guide built from your match result and document checklist. Mark each action as done and your progress updates immediately.',
+  'coach.empty.title': 'Choose an opportunity first',
+  'coach.empty.body':
+    'Go to Opportunities, pick the application you want to prepare, then come back here for your personalised coaching steps.',
+  'coach.empty.cta': 'Browse opportunities',
+  'coach.demoNotice':
+    'All scheme details are demonstration data. Confirm every rule and date on the official portal before applying.',
+  'coach.progress.label': 'Actions completed',
+  'coach.progress.value': '{done} of {total} done',
+  'coach.progress.announced': '{done} of {total} actions completed — {pct}%',
+  'coach.reset': 'Reset all actions',
+  'coach.reset.confirm': 'This will uncheck all actions. Continue?',
+  'coach.section.verify': 'Confirm eligibility conditions',
+  'coach.section.documents': 'Collect and renew documents',
+  'coach.section.apply': 'Apply',
+  'coach.section.verify.help':
+    'These conditions could not be checked from your profile answers. Confirm each one on the official portal.',
+  'coach.section.documents.help':
+    'Arrange missing documents first, then renew any that are out of date. Nothing is uploaded here — this is a checklist only.',
+  'coach.section.apply.help':
+    'Once conditions are confirmed and documents are ready, follow the steps below to submit your application.',
+  'coach.priority.missing': 'Missing',
+  'coach.priority.renewal': 'Needs renewal',
+  'coach.priority.verify': 'Needs verification',
+  'coach.priority.apply': 'Application step',
+  'coach.action.done': 'Mark as done',
+  'coach.action.undone': 'Mark as not done',
+  'coach.action.done.label': 'Done',
+  'coach.noUpload': 'No documents are uploaded. This is a checklist only.',
+  'coach.officialLink': 'Open official source',
+  'coach.allDone.title': 'All actions completed',
+  'coach.allDone.body':
+    'You have worked through every step. Open the official portal to confirm dates and submit your application.',
+  'coach.why.prefix': 'Why',
+  'coach.why.toggleLabel': 'Why is this action needed?',
+  'coach.conflict.notice':
+    'This opportunity has at least one clear conflict with your profile. Read the official rules carefully before investing more time.',
+  'coach.action.collect': 'Collect your {document}',
+  'coach.action.renew': 'Renew your {document} — it needs to be current when you apply',
+  'coach.action.verifyCondition': 'Confirm {condition} condition on the official portal',
+  'coach.action.checkOfficial': 'Open the official page and confirm the current rules and closing date',
+  'coach.action.verifyGeneral': 'Verify the {count} outstanding condition(s) listed above',
+  'coach.action.apply': 'Complete the application on the official portal and keep your acknowledgement number',
 } as const;
 
 export type TranslationKey = keyof typeof en;

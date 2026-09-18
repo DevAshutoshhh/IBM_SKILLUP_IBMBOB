@@ -20,6 +20,7 @@ export const hi: TranslationDictionary = {
   'nav.compare': 'तुलना',
   'nav.documents': 'दस्तावेज़',
   'nav.plan': 'कार्य योजना',
+  'nav.coach': 'आवेदन कोच',
   'nav.dashboard': 'डैशबोर्ड',
   'nav.privacy': 'निजता',
   'nav.openMenu': 'नेविगेशन मेन्यू खोलें',
@@ -438,6 +439,7 @@ export const hi: TranslationDictionary = {
   'privacy.item.bookmarks': 'सहेजे गए अवसर',
   'privacy.item.checklists': 'दस्तावेज़ चेकलिस्ट',
   'privacy.item.selection': 'चयनित आवेदन',
+  'privacy.item.coach': 'कोच कार्य पूरे',
   'privacy.where.title': 'यह कहाँ संग्रहीत है',
   'privacy.where.body':
     'केवल इसी उपकरण पर आपके ब्राउज़र के localStorage में। इस ऐप के पीछे कोई सर्वर, खाता या डेटाबेस नहीं है, इसलिए इसके कहीं और जाने का रास्ता ही नहीं है।',
@@ -470,4 +472,51 @@ export const hi: TranslationDictionary = {
   'error.reload': 'ऐप दोबारा लोड करें',
   // 'error.details' is deliberately not translated: it is a developer-facing
   // label and demonstrates the English fallback path in the running app.
+
+  /* Guided Application Coach -------------------------------------------- */
+  'coach.title': 'आवेदन कोच',
+  'coach.subtitle':
+    'आपके मिलान परिणाम और दस्तावेज़ चेकलिस्ट से बनाई गई चरण-दर-चरण मार्गदर्शिका। प्रत्येक कार्य पूरा होने पर उसे अंकित करें और प्रगति तुरंत अपडेट होगी।',
+  'coach.empty.title': 'पहले कोई अवसर चुनें',
+  'coach.empty.body':
+    'अवसर पृष्ठ पर जाएँ, जिस आवेदन की तैयारी करनी है उसे चुनें, फिर यहाँ आपके व्यक्तिगत कोचिंग चरण मिलेंगे।',
+  'coach.empty.cta': 'अवसर देखें',
+  'coach.demoNotice':
+    'सभी योजना विवरण प्रदर्शन डेटा हैं। आवेदन से पहले हर नियम और तिथि आधिकारिक पोर्टल पर पुष्ट करें।',
+  'coach.progress.label': 'पूरे किए गए कार्य',
+  'coach.progress.value': '{total} में से {done} पूरे',
+  'coach.progress.announced': '{total} में से {done} कार्य पूरे — {pct}%',
+  'coach.reset': 'सभी कार्य रीसेट करें',
+  'coach.reset.confirm': 'इससे सभी कार्यों के निशान हट जाएँगे। जारी रखें?',
+  'coach.section.verify': 'पात्रता शर्तें पुष्ट करें',
+  'coach.section.documents': 'दस्तावेज़ जुटाएँ और नवीनीकृत कराएँ',
+  'coach.section.apply': 'आवेदन करें',
+  'coach.section.verify.help':
+    'ये शर्तें आपकी प्रोफ़ाइल उत्तरों से जाँची नहीं जा सकीं। प्रत्येक शर्त आधिकारिक पोर्टल पर पुष्ट करें।',
+  'coach.section.documents.help':
+    'पहले ग़ायब दस्तावेज़ जुटाएँ, फिर जो पुराने हो गए हों उन्हें नवीनीकृत कराएँ। यहाँ कुछ भी अपलोड नहीं होता — यह केवल चेकलिस्ट है।',
+  'coach.section.apply.help':
+    'शर्तें पुष्ट होने और दस्तावेज़ तैयार होने के बाद, आवेदन जमा करने के लिए नीचे दिए चरणों का पालन करें।',
+  'coach.priority.missing': 'ग़ायब',
+  'coach.priority.renewal': 'नवीनीकरण चाहिए',
+  'coach.priority.verify': 'सत्यापन चाहिए',
+  'coach.priority.apply': 'आवेदन चरण',
+  'coach.action.done': 'पूरा अंकित करें',
+  'coach.action.undone': 'अधूरा अंकित करें',
+  'coach.action.done.label': 'पूरा',
+  'coach.noUpload': 'कोई दस्तावेज़ अपलोड नहीं होता। यह केवल चेकलिस्ट है।',
+  'coach.officialLink': 'आधिकारिक स्रोत खोलें',
+  'coach.allDone.title': 'सभी कार्य पूरे',
+  'coach.allDone.body':
+    'आपने हर चरण पूरा कर लिया है। तिथियाँ पुष्ट करने और आवेदन जमा करने के लिए आधिकारिक पोर्टल खोलें।',
+  'coach.why.prefix': 'क्यों',
+  'coach.why.toggleLabel': 'यह कार्य क्यों आवश्यक है?',
+  'coach.conflict.notice':
+    'इस अवसर में आपकी प्रोफ़ाइल से कम से कम एक स्पष्ट टकराव है। अधिक समय लगाने से पहले आधिकारिक नियम ध्यान से पढ़ें।',
+  'coach.action.collect': 'अपना {document} जुटाएँ',
+  'coach.action.renew': 'अपना {document} नवीनीकृत कराएँ — आवेदन के समय यह वर्तमान होना चाहिए',
+  'coach.action.verifyCondition': 'आधिकारिक पोर्टल पर {condition} शर्त पुष्ट करें',
+  'coach.action.checkOfficial': 'आधिकारिक पृष्ठ खोलें और वर्तमान नियम व अंतिम तिथि पुष्ट करें',
+  'coach.action.verifyGeneral': 'ऊपर सूचीबद्ध {count} शेष शर्त(ें) सत्यापित करें',
+  'coach.action.apply': 'आधिकारिक पोर्टल पर आवेदन पूरा करें और अपना पावती क्रमांक सुरक्षित रखें',
 };

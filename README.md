@@ -18,6 +18,7 @@ owner enables GitHub Pages with **Source: GitHub Actions** and the deployment wo
 - Deterministic opportunity matching with confirmed, unverified, and conflicting factors explained.
 - Search, filtering, bookmarks, details, and side-by-side comparison for up to three opportunities.
 - Per-opportunity document checklist and a weighted document-readiness percentage.
+- **Guided Application Coach** — converts missing documents and unverified eligibility conditions into an ordered, interactive action plan. Each action explains why it is required, lets the student mark it done, and recalculates progress immediately. Progress is saved to `localStorage` and the feature works fully offline.
 - Printable action plan with next steps and links to official sources.
 - English and Hindi interfaces.
 - Browser `localStorage` persistence, an itemised privacy panel, and complete local-data deletion.
@@ -81,6 +82,11 @@ and deploys `dist/`.
    needing renewal receives partial credit; non-applicable items are excluded.
 5. The action-plan screen collects the preparation status, official link, and next actions into a
    printable view.
+6. `src/utils/coach.ts` converts the match result and document checklist into a three-section action
+   plan: eligibility-condition verifications, document tasks (missing before expiring, required before
+   optional), and fixed apply steps. `src/pages/CoachPage.tsx` renders each action as a checkbox with
+   a collapsible "why" explanation. Completion state is stored per opportunity in `coachProgress`
+   within the same `localStorage` key as all other app state.
 
 Application state is owned by `src/hooks/useAppState.tsx` and persisted through
 `src/utils/storage.ts`. English and Hindi strings are resolved by `src/i18n/`. The custom hash router
@@ -91,7 +97,9 @@ GitHub Pages.
 
 The checked-in suite covers matching boundaries and determinism, readiness scoring, storage and
 deletion, translation fallback, form validation, language switching, filtering, bookmarking,
-match explanations, checklist updates, privacy controls, and dialog keyboard dismissal.
+match explanations, checklist updates, privacy controls, dialog keyboard dismissal, and the
+Guided Application Coach (document actions, verify actions, apply actions, plan assembly, completion
+counting, and percentage calculation across the full dataset).
 
 The project includes visible focus styles, semantic controls, a skip link, dialog focus management,
 reduced-motion rules, and responsive/print styles. These implementation measures are not a claim of

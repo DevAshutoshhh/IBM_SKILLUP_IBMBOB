@@ -97,6 +97,7 @@ describe('the stored-data inventory shown in the privacy panel', () => {
       { key: 'privacy.item.bookmarks', count: 2 },
       { key: 'privacy.item.checklists', count: 1 },
       { key: 'privacy.item.selection', count: 1 },
+      { key: 'privacy.item.coach', count: 0 },
     ]);
   });
 

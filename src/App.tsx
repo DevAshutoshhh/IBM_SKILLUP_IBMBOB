@@ -13,6 +13,7 @@ import { MatchesPage } from './pages/MatchesPage';
 import { ComparePage } from './pages/ComparePage';
 import { DocumentsPage } from './pages/DocumentsPage';
 import { ActionPlanPage } from './pages/ActionPlanPage';
+import { CoachPage } from './pages/CoachPage';
 import { DashboardPage } from './pages/DashboardPage';
 
 export function App() {
@@ -48,6 +49,7 @@ export function App() {
           {page === 'plan' ? (
             <ActionPlanPage onNavigate={navigate} onOpenPrivacy={() => setPrivacyOpen(true)} />
           ) : null}
+          {page === 'coach' ? <CoachPage onNavigate={navigate} /> : null}
           {page === 'dashboard' ? <DashboardPage onNavigate={navigate} /> : null}
         </ErrorBoundary>
       </main>

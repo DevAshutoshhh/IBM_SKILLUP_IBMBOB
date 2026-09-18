@@ -268,7 +268,44 @@ export type PageId =
   | 'compare'
   | 'documents'
   | 'plan'
+  | 'coach'
   | 'dashboard';
+
+/* ------------------------------------------------------------------ */
+/* Application Coach                                                    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Each coaching action has a stable ID so completion state can be stored
+ * without coupling it to the ordered list index.
+ */
+export type CoachActionKind =
+  | 'verify_condition'  // confirm an eligibility condition on the official portal
+  | 'collect_document'  // gather a missing document
+  | 'renew_document'    // renew an expiring document
+  | 'check_official'    // open the official page and verify current rules
+  | 'apply';            // submit the application
+
+export interface CoachAction {
+  /** Stable ID: e.g. "verify_condition:gender", "collect_document:income_certificate" */
+  id: string;
+  kind: CoachActionKind;
+  /** i18n key for the action label (rendered by CoachPage, not by this type) */
+  labelKey: string;
+  /** Interpolation values for labelKey */
+  labelValues?: Record<string, string>;
+  /** i18n key explaining *why* this action is needed */
+  whyKey: string;
+  whyValues?: Record<string, string>;
+  /** Priority order within its section — lower is more urgent */
+  priority: number;
+}
+
+/** Map of coachActionId -> completed boolean, per opportunity */
+export type CoachProgress = Partial<Record<string, boolean>>;
+
+/** All coach progress records, keyed by opportunityId */
+export type CoachStore = Record<string, CoachProgress>;
 
 export interface AppState {
   profile: StudentProfile;
@@ -276,5 +313,6 @@ export interface AppState {
   compareIds: string[];
   selectedOpportunityId: string | null;
   checklists: ChecklistStore;
+  coachProgress: CoachStore;
   language: Language;
 }

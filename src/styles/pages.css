@@ -1132,3 +1132,224 @@
   color: var(--navy-800);
   font-variant-numeric: tabular-nums;
 }
+
+/* ==================================================================
+   Guided Application Coach
+   ================================================================== */
+
+/* ---- Progress block ------------------------------------------------------ */
+
+.coach-progress {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.coach-progress__heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-800);
+  margin-bottom: var(--space-3);
+}
+
+.coach-progress__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.coach-progress__note {
+  font-size: 0.85rem;
+  color: var(--ink-500);
+}
+
+/* ---- All-done banner ----------------------------------------------------- */
+
+.coach-all-done {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.coach-all-done > div {
+  flex: 1;
+}
+
+.coach-all-done > div p {
+  margin-top: var(--space-1);
+  font-size: 0.92rem;
+}
+
+/* ---- Section ------------------------------------------------------------- */
+
+.coach-section {
+  margin-bottom: var(--space-7);
+}
+
+.coach-section__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy-700);
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+}
+
+.coach-section__count {
+  margin-left: auto;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-500);
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+
+.coach-section__help {
+  font-size: 0.88rem;
+  color: var(--ink-500);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Action list --------------------------------------------------------- */
+
+.coach-action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.coach-action {
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.coach-action--done {
+  background: var(--teal-50);
+  border-color: var(--teal-100);
+}
+
+.coach-action__check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  width: 100%;
+}
+
+.coach-action__input {
+  /* Keep in flow — don't use clip-path, only visually enhance. Browsers
+     handle the focus ring natively on the <input type="checkbox">. */
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--teal-600);
+  cursor: pointer;
+}
+
+.coach-action__label {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-800);
+  line-height: 1.5;
+}
+
+.coach-action--done .coach-action__label {
+  color: var(--ink-500);
+  text-decoration: line-through;
+}
+
+.coach-action__done-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--teal-700);
+  background: var(--teal-100);
+  border-radius: 999px;
+  padding: 2px 9px;
+  flex-shrink: 0;
+}
+
+/* ---- Why toggle ---------------------------------------------------------- */
+
+.coach-action__why {
+  margin-top: var(--space-2);
+  padding-left: 29px; /* aligns with label text past the checkbox */
+}
+
+.coach-action__why-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.82rem;
+  color: var(--navy-600);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.coach-action__why-toggle:hover {
+  color: var(--navy-800);
+}
+
+.coach-action__why-text {
+  margin-top: var(--space-2);
+  font-size: 0.88rem;
+  color: var(--ink-600);
+  line-height: 1.55;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-1);
+  border-left: 3px solid var(--border-strong);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ---- Page actions -------------------------------------------------------- */
+
+.coach-page__actions {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ---- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .coach-progress__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .coach-all-done {
+    flex-direction: column;
+  }
+  .coach-page__actions {
+    flex-direction: column;
+  }
+  .coach-page__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

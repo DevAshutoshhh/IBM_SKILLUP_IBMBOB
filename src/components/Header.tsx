@@ -3,6 +3,7 @@ import {
   BarChart3,
   ClipboardList,
   FileCheck2,
+  GraduationCap,
   Home,
   Languages,
   Menu,
@@ -34,6 +35,7 @@ const NAV_ITEMS: { page: PageId; labelKey: string; icon: typeof Home }[] = [
   { page: 'compare', labelKey: 'nav.compare', icon: Scale },
   { page: 'documents', labelKey: 'nav.documents', icon: ClipboardList },
   { page: 'plan', labelKey: 'nav.plan', icon: FileCheck2 },
+  { page: 'coach', labelKey: 'nav.coach', icon: GraduationCap },
 ];
 
 function LanguageToggle() {

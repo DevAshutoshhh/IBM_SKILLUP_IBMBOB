@@ -1,4 +1,4 @@
-import type { AppState, StudentProfile } from '../types';
+import type { AppState, CoachStore, StudentProfile } from '../types';
 
 /**
  * The only persistence layer in SaathiSetu.
@@ -32,6 +32,7 @@ export const INITIAL_STATE: AppState = {
   compareIds: [],
   selectedOpportunityId: null,
   checklists: {},
+  coachProgress: {},
   language: 'en',
 };
 
@@ -51,6 +52,24 @@ function isStorageAvailable(): boolean {
 export const storageAvailable = (): boolean =>
   typeof window !== 'undefined' && isStorageAvailable();
 
+/** Validate and sanitise a stored CoachStore so stale shapes never crash. */
+function reconcileCoachStore(raw: unknown): CoachStore {
+  if (typeof raw !== 'object' || raw === null) return {};
+  const result: CoachStore = {};
+  for (const [oppId, progress] of Object.entries(raw as Record<string, unknown>)) {
+    if (typeof oppId !== 'string') continue;
+    if (typeof progress !== 'object' || progress === null) continue;
+    const sanitised: Record<string, boolean> = {};
+    for (const [actionId, done] of Object.entries(progress as Record<string, unknown>)) {
+      if (typeof actionId === 'string' && typeof done === 'boolean') {
+        sanitised[actionId] = done;
+      }
+    }
+    result[oppId] = sanitised;
+  }
+  return result;
+}
+
 /** Merges stored data over the defaults so older saved states stay loadable. */
 function reconcile(raw: unknown): AppState {
   if (typeof raw !== 'object' || raw === null) return INITIAL_STATE;
@@ -66,6 +85,7 @@ function reconcile(raw: unknown): AppState {
       typeof value.selectedOpportunityId === 'string' ? value.selectedOpportunityId : null,
     checklists:
       typeof value.checklists === 'object' && value.checklists !== null ? value.checklists : {},
+    coachProgress: reconcileCoachStore(value.coachProgress),
     language: value.language === 'hi' ? 'hi' : 'en',
   };
 }
@@ -110,10 +130,15 @@ export function describeStoredData(state: AppState): { key: string; count: numbe
     return value !== null && value !== 'prefer_not_to_say';
   }).length;
 
+  const coachCount = Object.values(state.coachProgress).reduce(
+    (sum, progress) => sum + Object.values(progress ?? {}).filter(Boolean).length,
+    0,
+  );
   return [
     { key: 'privacy.item.profile', count: profileAnswers },
     { key: 'privacy.item.bookmarks', count: state.bookmarks.length },
     { key: 'privacy.item.checklists', count: Object.keys(state.checklists).length },
     { key: 'privacy.item.selection', count: state.selectedOpportunityId ? 1 : 0 },
+    { key: 'privacy.item.coach', count: coachCount },
   ];
 }
